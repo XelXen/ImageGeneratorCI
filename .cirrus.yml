@@ -1,0 +1,27 @@
+env:
+  TZ: Asia/KolKata
+
+task:
+  name: "Text2Img CI"
+  timeout_in: 120m  
+  container:
+      image: ubuntu:latest
+      cpu: 8
+      memory: 32G
+  
+  Preparation:
+       - export DEBIAN_FRONTEND=noninteractive
+       - apt update
+       - apt install sudo
+       - df -h
+       - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+       - ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
+       - apt-get install -y tzdata
+       - dpkg-reconfigure --frontend noninteractive tzdata
+       - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache neofetch -y
+       - sudo apt install python3.10 -y
+       - sudo apt install python3-pip -y
+  
+  Runner:
+       - pip install diffusers torch
+       - python3 main.py
