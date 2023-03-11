@@ -23,5 +23,5 @@ task:
        - sudo apt install python3-pip -y
   
   Runner_script:
-       - pip install diffusers torch
+       - pip install diffusers torch transformers
        - python3 main.py
