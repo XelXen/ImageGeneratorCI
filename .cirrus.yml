@@ -6,7 +6,7 @@ task:
   timeout_in: 120m  
   container:
       image: ubuntu:latest
-      cpu: 8
+      cpu: 16
       memory: 32G
   
   Preparation_script:
@@ -23,5 +23,5 @@ task:
        - sudo apt install python3-pip -y
   
   Runner_script:
-       - pip install diffusers torch transformers
+       - pip install diffusers torch transformers accelerate
        - python3 main.py
