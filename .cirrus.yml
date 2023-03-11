@@ -9,7 +9,7 @@ task:
       cpu: 8
       memory: 32G
   
-  Preparation:
+  Preparation_script:
        - export DEBIAN_FRONTEND=noninteractive
        - apt update
        - apt install sudo
@@ -22,6 +22,6 @@ task:
        - sudo apt install python3.10 -y
        - sudo apt install python3-pip -y
   
-  Runner:
+  Runner_script:
        - pip install diffusers torch
        - python3 main.py
